@@ -14,5 +14,9 @@ namespace PRSLibrary.Models {
 
 
         public RequestLine() { }
+
+        public virtual Request Request { get; set; }
+        public virtual Product Porduct { get; set; } 
+
     }
 }

@@ -1,4 +1,5 @@
-﻿using System;
+﻿using PRSTestProject.Model;
+using System;
 using System.Collections.Generic;
 using System.ComponentModel.DataAnnotations;
 using System.ComponentModel.DataAnnotations.Schema;
@@ -27,6 +28,10 @@ namespace PRSLibrary.Models {
         public decimal Total { get; set; }
         public int UserId { get; set; }
 
+        public virtual User User { get; set; }
+        
         public Request() { }
+
+
     }
 }
