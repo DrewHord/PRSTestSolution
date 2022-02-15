@@ -14,13 +14,13 @@ namespace PRSLibrary.Controllers {
         public RequestLineController(PRSDbContext context) {
             this._context = context;
         }
-
+        //List all
         public IEnumerable<RequestLine> GetAll() {
             return _context.RequestLines.Include(x => x.Product)
                                         .Include(x => x.Request).ToList();
 
         }
-
+        //find by ID
         public RequestLine GetByPk(int id) {
             return _context.RequestLines.Include(x => x.Product)
                                         .Include(x => x.Request)

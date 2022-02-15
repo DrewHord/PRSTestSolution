@@ -18,6 +18,14 @@ namespace PRSLibrary.Controllers {
             this._context = context;
         }
 
+        //Last Method get review status now owned by the user
+        public IEnumerable<Request> GetRequestsInReview(int userId) {
+            var requests = _context.Requests
+                .Where(x => x.Status == "REVIEW" && x.UserId != userId)
+                .ToList();
+            return requests;
+        }
+
         //Update Fuction
         public void SetReview(Request request) {
             if(request.Total <= 50) {

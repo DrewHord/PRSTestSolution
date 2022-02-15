@@ -13,15 +13,22 @@ namespace TestPRSLibrary {
             var context = new PRSDbContext();
 
             var reqCtrl = new RequestController(context);
+            
 
-            var req = reqCtrl.GetByPk(5);
+            var reqs = reqCtrl.GetRequestsInReview(3);
+            
+            foreach(var req in reqs) {
+                Console.WriteLine($"{req.Description} {req.Status} {req.Total} {req.UserId}");
+            }
+
+            //var req = reqCtrl.GetByPk(5);
 
             //reqCtrl.SetReview(req);
             //reqCtrl.SetApproved(req);
-            reqCtrl.SetRejected(req);
+            //reqCtrl.SetRejected(req);
 
-            req = reqCtrl.GetByPk(5);
-            Console.WriteLine($"{req.Description} {req.Status} {req.Total}");
+            //req = reqCtrl.GetByPk(5);
+            //Console.WriteLine($"{req.Description} {req.Status} {req.Total}");
 
 
 
