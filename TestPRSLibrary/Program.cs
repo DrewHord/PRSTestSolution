@@ -6,24 +6,38 @@ using System;
 using System.Linq;
 
 namespace TestPRSLibrary {
-    //static void Print(Product product) {
-    //Console.WriteLine($"{product.Id,-5} {product.PartNbr,-12} {product.Name,-12 } //{product.Price,10:c} {product.Vendor.Name,-15}");
-        //}
 
     class Program {
         static void Main(string[] args) {
 
             var context = new PRSDbContext();
 
-            var userCtrl = new UsersController(context);
+            var reqCtrl = new RequestController(context);
 
-            var user = userCtrl.Login("sa", "sax");
+            var req = reqCtrl.GetByPk(5);
 
-            if(user is null) {
-                Console.WriteLine("User not found");
-            } else {
-                Console.WriteLine(user.Username);
-            }
+            //reqCtrl.SetReview(req);
+            //reqCtrl.SetApproved(req);
+            reqCtrl.SetRejected(req);
+
+            req = reqCtrl.GetByPk(5);
+            Console.WriteLine($"{req.Description} {req.Status} {req.Total}");
+
+
+
+
+            //static void Print(Product product) {
+            //    Console.WriteLine($"{product.Id,-5} {product.PartNbr,-12} {product.Name,-12 } //{product.Price,10:c} {product.Vendor.Name,-15}");
+            //    }
+            //var userCtrl = new UsersController(context);
+
+            //var user = userCtrl.Login("sa", "sax");
+
+            //if(user is null) {
+            //    Console.WriteLine("User not found");
+            //} else {
+            //    Console.WriteLine(user.Username);
+            //}
 
             //var username = "gdoud";
             //var password = "password";

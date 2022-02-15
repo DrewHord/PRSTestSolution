@@ -10,10 +10,34 @@ using System.Threading.Tasks;
 namespace PRSLibrary.Controllers {
     public class RequestController {
 
+    
+
         private readonly PRSDbContext _context;
 
         public RequestController(PRSDbContext context) {
             this._context = context;
+        }
+
+        //Update Fuction
+        public void SetReview(Request request) {
+            if(request.Total <= 50) {
+                request.Status = "APPROVED";
+            } else {
+                request.Status = "REVIEW";
+            }
+            Change(request);
+        }
+
+        //SET APPROVED
+        public void SetApproved(Request request) {
+            request.Status = "APPROVED";
+            Change(request);
+        }
+        
+        // SET REJECTED
+        public void SetRejected(Request request) {
+            request.Status = "REJECTED";
+            Change(request);
         }
 
         public IEnumerable<Request> GetAll() {

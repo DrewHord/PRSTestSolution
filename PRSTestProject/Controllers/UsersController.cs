@@ -15,7 +15,7 @@ namespace PRSLibrary.Controllers {
             this._context = context; 
         }
 
-        //Adding Username and Password authentication 
+        //Adding Username and Password authentication /Login
         public User Login(string username, string password) {
             return _context.Users
                             .SingleOrDefault(x => x.Username == username
